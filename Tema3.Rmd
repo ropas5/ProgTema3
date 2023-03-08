@@ -369,6 +369,10 @@ direcion <-"./data/owid-covid-data.csv"
 #df<- read.csv(direcion , stringsAsFactors = F)
 df$date<-as.character.POSIXt(df$date,format= "%Y-%m-%d")
 
+#creamos una base de datos con solo los paises que nos interesan
+paises<-df %>%
+  filter(location ==c("United States","Italy","France","Germany","Canada","Japan","united Kingdom"))
+         
 ggplot(paises, aes(x=date,  y=new_deaths_per_million, fill=location,colour=location))+geom_line()
 
 
