@@ -363,21 +363,21 @@ data(Salaries, package="carData")
 
 ```{r}
 library(readr)
-#url <- " https://covid.ourworldindata.org/data/owid-covid-data.csv"
-#df2<- read_csv(url,col_names = TRUE) 
-direcion <-"./data/owid-covid-data.csv"
+URL<- "https://covid.ourworldindata.org/data/owid-covid-data.csv"
+download.file(url=URL,destfile= "df" )
+#direcion <-"./data/owid-covid-data.csv"
 #df<- read.csv(direcion , stringsAsFactors = F)
 df$date<-as.character.POSIXt(df$date,format= "%Y-%m-%d")
 
 #creamos una base de datos con solo los paises que nos interesan
 paises<-df %>%
-  filter(location ==c("United States","Italy","France","Germany","Canada","Japan","united Kingdom"))
+  filter(location ==c("United States","Italy","France","Germany","Canada","Japan","united Kingdom","Spain"))
          
-ggplot(paises, aes(x=date,  y=new_deaths_per_million, fill=location,colour=location))+geom_line()+labs(title="Daily new confirmed COVID-19 deaths per million")
+ggplot(paises, aes(x=date,  y=new_deaths_per_million, fill=location,colour=location))+geom_line()+geom_point()+labs(title="Daily new confirmed COVID-19 deaths per million")
 
 #hacemos que el grafico sea interactivo
 ggplotly(g)
-ggsave("Daily new confirmed COVID-19 deaths per million.pdf")
+
 
 
 ```
