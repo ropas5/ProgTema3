@@ -369,7 +369,7 @@ direcion <-"./data/owid-covid-data.csv"
 #df<- read.csv(direcion , stringsAsFactors = F)
 df$date<-as.character.POSIXt(df$date,format= "%Y-%m-%d")
 
-ggplot(paises, aes(x=date,  y=new_deaths_per_million))
+ggplot(paises, aes(x=date,  y=new_deaths_per_million, fill=location,colour=location))+geom_line()
 
 
 
