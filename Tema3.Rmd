@@ -373,7 +373,8 @@ df$date<-as.character.POSIXt(df$date,format= "%Y-%m-%d")
 paises<-df %>%
   filter(location ==c("United States","Italy","France","Germany","Canada","Japan","united Kingdom"))
          
-ggplot(paises, aes(x=date,  y=new_deaths_per_million, fill=location,colour=location))+geom_line()
+ggplot(paises, aes(x=date,  y=new_deaths_per_million, fill=location,colour=location))+geom_line()+labs(title="Daily new confirmed COVID-19 deaths per million")
+
 
 
 
